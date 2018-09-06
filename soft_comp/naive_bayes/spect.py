@@ -1,4 +1,5 @@
 import csv
+import random
 
 def read_input(string):
     with open(string) as csvfile:
@@ -51,22 +52,22 @@ def test(p_yes, p_no, prob_yes, test_data):
 
 
 
-def calculate_probability(data, i):
-    print('inside calculate probability')
-    i_count = 0
-    total_count = 0
-
-    for j in data:
-        if ( j == i ):
-            i_count = i_count + 1
-        total_count = total_count + 1
-
-    return i_count / total_count
+# def calculate_probability(data, i):
+#     print('inside calculate probability')
+#     i_count = 0
+#     total_count = 0
+#
+#     for j in data:
+#         if ( j == i ):
+#             i_count = i_count + 1
+#         total_count = total_count + 1
+#
+#     return i_count / total_count
 
 
 def main():
     data = read_input('SPECT.csv')
-
+    random.shuffle(data)
     # for i in data:
     #     print(i)
 
@@ -77,42 +78,63 @@ def main():
 
 
     total_records = len(data)
-    print(total_records)
+    #print(total_records)
+
+    tenfold = 0
+    y = total_records // 10
+    x = 0
 
 
 
-    for i in range(len(data[0]) - 1):
+    while ( y < total_records ):
+
+
+
+        p_yes = []
+        p_no = []
+        prob_yes = 0
+        train_data = data[:x] + data[y:]
+        test_data = data[x:y]
+
+
+        for i in range(len(data[0]) - 1):
+            c1 = 0
+            c2 = 0
+
+            for j in range(len(train_data)):
+                if train_data[j][-1] == 1:
+                    if train_data[j][i] == 1:
+                        c1 = c1 + 1
+                else:
+                    if train_data[j][i] == 1:
+                        c2 = c2 + 1
+
+            p_yes.append(c1/total_records)
+            p_no.append(c2/total_records)
+
+        c1 = 0
+        for i in range(len(train_data)):
+            if train_data[i][-1] == 1:
+                c1 = c1 + 1
+        # print(c1)
+        prob_yes = c1 / total_records
+
+        # print(p_yes)
+        # print(p_no)
+        # print(prob_yes)
         c1 = 0
         c2 = 0
-        for j in range(total_records):
-            if data[j][-1] == 1:
-                if data[j][i] == 1:
-                    c1 = c1 + 1
+        for i in test_data:
+            if ( test(p_yes,p_no,prob_yes,i[:-1]) == i[-1] ):
+                print("success")
+                c1 = c1 + 1
             else:
-                if data[j][i] == 1:
-                    c2 = c2 + 1
+                print("Fail")
+            c2 = c2 + 1
 
-        p_yes.append(c1/total_records)
-        p_no.append(c2/total_records)
+        print("Accuracy is ",(c1/c2)*100 , "%")
 
-    c1 = 0
-    for i in range(total_records):
-        if data[i][-1] == 1:
-            c1 = c1 + 1
-    print(c1)
-    prob_yes = c1 / total_records
-
-    print(p_yes)
-    print(p_no)
-    print(prob_yes)
-    c1 = 0
-    for i in data:
-        if ( test(p_yes,p_no,prob_yes,i[:-1]) == i[-1] ):
-            print("success")
-            c1 = c1 + 1
-        else:
-            print("Fail")
-
-    print("Accuracy is ",(c1/total_records)*100 , "%")
+        x = y
+        y = y + total_records // 10
 
 main()
