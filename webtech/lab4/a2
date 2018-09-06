@@ -1,0 +1,29 @@
+var i = 0
+
+var images = document.getElementsByClassName('img');
+
+
+if(i==0){
+	document.getElementById('prev').style.display="none";
+}
+else{
+	document.getElementById('prev').style.display="active";
+}
+if(i==images.length()-1){
+	document.getElementById('next').style.display="none";
+}
+else{
+	document.getElementById('next').style.display="active";
+}
+
+function previous(){
+	images[i].style.display="none";
+	i = i - 1;
+	images[i].style.display="active";
+}
+
+function next(){
+	images[i].style.display="none";
+	i = i + 1;
+	images[i].style.display="active";
+}

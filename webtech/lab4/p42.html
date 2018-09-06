@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Online Grocery</title>
+</head>
+<body>
+	<table>
+		<th width="80">Items</th>
+		<th width="80">Price /kg </th>
+		<th width="80">Quantity (in kgs)</th>
+		<tr>
+			<td>Item 1</td>
+			<td align="center" id="val1">100</td>	
+			<td><input type="number" name="qty1" id="idQty1" onchange="Calculate()"></td>
+		</tr>
+		<tr>
+			<td>Item 1</td>
+			<td align="center" id="val2">100</td>	
+			<td><input type="number" name="qty2" id="idQty2" onchange="Calculate()"></td>
+		</tr>
+		<tr>
+			<td>Item 1</td>
+			<td align="center" id="val3">100</td>	
+			<td><input type="number" name="qty3" id="idQty3" onchange="Calculate()"></td>
+		</tr>
+	</table>
+	<p>Total <br> <div id="total" > </div></p>
+	
+</body>
+<script>
+	function Calculate() {
+		var total = 0;
+		var varQty1 = 0;
+		if (document.getElementById("idQty1").value){
+			varQty1 = document.getElementById("idQty1").value;
+		};
+		var varQty2 = 0;
+		if (document.getElementById("idQty2").value){
+			varQty2 = document.getElementById("idQty2").value;
+		};
+		var varQty3 = 0;
+		if (document.getElementById("idQty3").value){
+			varQty3 = document.getElementById("idQty3").value;
+		};
+		console.log(document.getElementById("val2").innerHTML)
+		total = parseInt(varQty1)*parseInt(document.getElementById("val1").innerHTML) + parseInt(varQty2)*parseInt(document.getElementById("val2").innerHTML) + parseInt(varQty3)*parseInt(document.getElementById("val3").innerHTML);
+		document.getElementById("total").value=total; 
+
+		document.getElementById("total").innerHTML = total;
+	}
+</script>
+</html>

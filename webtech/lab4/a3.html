@@ -1,0 +1,84 @@
+<html>
+<head>
+<script>
+function validate()                                   
+{
+    var name = document.forms["RegForm"]["Name"];              
+    var email = document.forms["RegForm"]["EMail"];   
+ 
+
+    var LastName = document.forms["RegForm"]["LastName"]; 
+  
+    console.log("HiHi",name.value);
+
+    if (name.value == "")                                 
+    {
+        window.alert("Please enter your name.");
+        name.focus();
+        return false;
+    }
+    console.log(name.value.length)
+    if (name.value.length > 20 ){
+        window.alert("Name should have less than 20 characters");
+        name.focus();
+        return false;
+    }
+    if (LastName.value.length > 20 ){
+        window.alert("Last Name should have less than 20 characters");
+        LastName.focus();
+        return false;
+    }
+  
+    if (LastName.value == "")                              
+    {
+        window.alert("Please enter your LastName.");
+        name.focus();
+        return false;
+    }
+      
+
+    if (email.value == "")                                  
+    {
+        window.alert("Please enter a valid e-mail address.");
+        email.focus();
+        return false;
+    }
+  
+    if (email.value.indexOf("@", 0) < 0)                
+    {
+        window.alert("Please enter a valid e-mail address.");
+        email.focus();
+        return false;
+    }
+  
+    if (email.value.indexOf(".", 0) < 0)                
+    {
+        window.alert("Please enter a valid e-mail address.");
+        email.focus();
+        return false;
+    }
+  
+  
+    return true;
+}</script>
+ 
+</head>
+  
+<body>
+<h1 style="text-align: center"> Guest Form </h1>          
+<form name="RegForm" action="#" onsubmit="return validate()" method="post"> 
+     
+    <p>First Name: <input type="text" size=20 name="Name"> </p><br>       
+    <p> Last Name: <input type="text" size=20 name="LastName">  </p><br>
+    <p>E-mail Address: <input type="text" size=65 name="EMail">  </p><br>
+    <input type="radio" name="gender" value="male" > Male<br>
+    <input type="radio" name="gender" value="female"> Female<br>
+          
+<br><br>
+    <p>Comments:  <textarea cols="55" name="Comment">  </textarea></p>
+    <p><input type="submit" value="send" name="Submit">     
+        <input type="reset" value="Reset" name="Reset">  
+    </p>         
+</form>
+</body>
+</html>

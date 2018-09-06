@@ -1,0 +1,36 @@
+h1{
+	text-align: center;
+	font-family: 'Oswald', sans-serif;
+}
+
+h2{
+	text-align: center;
+	font-family: 'Baloo Bhai', cursive;
+	 text-shadow: 2px 2px grey;
+	 font-size: 30px;
+}
+
+.item{
+float:left;
+}
+figure {
+  align-content: center;
+  align-self: center;
+  width: 60%;
+  text-align: center;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
+  border: thin silver solid;
+  margin: 0.5em;
+  padding: 0.5em;
+  display: inline-grid;
+  float:center;
+}
+
+body{
+	background: #EDE574;  /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #E1F5C4, #EDE574);  /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #E1F5C4, #EDE574); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}

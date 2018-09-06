@@ -1,0 +1,61 @@
+body
+{
+	border: 
+}
+fieldset{
+    width:60%;
+}
+input[type=submit], input[type=reset] {
+    background-color: orange;
+    border: none;
+    color: black;
+    padding: 2px 2px;
+    text-decoration: none;
+    margin: 2px 2px;
+    cursor: pointer;
+    border: 2px solid grey;
+}
+
+input[type=submit]:hover {
+    background-color: red;
+    align: center;
+}
+
+input[type=reset]:hover {
+    background-color: red;
+    align: right;
+}
+
+.box{
+	background-color: orange;
+    width: 150px;
+    border: 2px solid grey;
+    padding: 1px;
+   
+}
+
+input[type=text] {
+    width: 40%;
+    padding: 2px 2px;
+    margin: 1px 1;
+    border: 2px solid grey;
+    background-color: #F3E2A9;
+    color: black;
+} 
+
+form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+label, input {
+    /* in order to define widths */
+    display: inline-block;
+}
+
+label {
+    width: 30%;
+    /* positions the label text beside the input */
+    text-align: right;
+}
+
