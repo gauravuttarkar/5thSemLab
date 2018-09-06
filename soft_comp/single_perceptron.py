@@ -1,5 +1,5 @@
 import csv
-
+import random
 
 data = []
 
@@ -78,6 +78,7 @@ with open('IRIS.csv') as csvfile:
 threshold = 0.9
 lr = 0.4
 init_weight = 1 / n
+random.shuffle(data)
 
 w = []
 
@@ -93,14 +94,19 @@ ten_fold = 0
 
 flag = 0
 
-while(ten_fold<10):
+x = 0
+y = 10
+
+while(y<100):
 	print('*'*50)
+	train_data = data[:x] + data[y:]
+	test_data = data[x:y]
 	for j in range(5000):
-		for i in data[:ten_fold+90]:
+		for i in train_data:
 			w,e = func(w,i,threshold,lr)
 			flag = e
 		if flag == 0:
-			for i in data[:ten_fold+90]:
+			for i in train_data:
 				w,e = func(w,i,threshold,lr)
 			if e == 0:
 				break
@@ -108,11 +114,11 @@ while(ten_fold<10):
 				
 
 	print('Testing')
-	for i in data[ten_fold+90:]:
+	for i in test_data:
 		test(w,i,threshold,lr)
-	for i in data[:101-ten_fold-90]	:
-		test(w,i,threshold,lr)
-	ten_fold = ten_fold + 1
+
+	x = y
+	y = y + 10
 
 flag = 0
 count = 0

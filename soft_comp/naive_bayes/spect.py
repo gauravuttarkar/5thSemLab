@@ -26,7 +26,7 @@ def read_input(string):
 def test(p_yes, p_no, prob_yes, test_data):
     ans_yes = 0
     ans_no = 0
-    #For P(x/Yes)
+
     prod_yes = 1
     prod_no = 1
     for i in range(len(test_data)):

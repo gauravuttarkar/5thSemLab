@@ -13,14 +13,14 @@ def func (w, data, threshold,lr):
 		sum = sum + data[i] * w[i];
 
 	sum = sum + w[-1]	 
-	print(sum)
+	#print(sum)
 	res = None
 	e = 0
 	if ( sum >= threshold ):
 		res = 1
 	else:
 		res = 0;
-	print("data ",data[-1],"res ",res)
+	#print("data ",data[-1],"res ",res)
 	
 	#print("error is ", data[-1] - res )
 	if data[-1] - res:
@@ -81,40 +81,45 @@ print(w)
 ten_fold = 0
 
 flag = 0
-
-while(ten_fold<10):
+x = 0
+y = len(data) // 10
+total_Accuracy = 0
+c = 0
+while(y < len(data) ):
+	train_data = data[:x] + data[y:]
+	test_data = data[x:y]
 	print('*'*50)
 	for j in range(iterate):
-		for i in data[:ten_fold+90]:
+		for i in train_data:
 			w,e = func(w,i,threshold,lr)
 			flag = e
 		if flag == 0:
-			for i in data[:ten_fold+90]:
+			for i in train_data:
 				w,e = func(w,i,threshold,lr)
 			if e == 0:
 				break
 
 				
 
-	print('Testing')
-	for i in data[ten_fold+90:]:
-		test(w,i,threshold,lr)
-	for i in data[:101-ten_fold-90]	:
-		test(w,i,threshold,lr)
-	ten_fold = ten_fold + 1
+	#print('Testing')
+	# for i in test_data:
+	# 	test(w,i,threshold,lr)
+	# for i in test_data	:
+	# 	test(w,i,threshold,lr)
+	count = 0
+	for i in test_data:
+		e = test(w, i, threshold, lr)
+		if e == 0:
+			count = count + 1
+		if e != 0:
+			flag = e
+	print('accuracy ', (count / len(test_data)) * 100, '%')
+	total_Accuracy = total_Accuracy + (count / len(test_data)) * 100
+	x = y
+	y = y + 10
+	c = c + 1
 
-flag = 0
-count = 0
-for i in data:
-	e = test(w,i,threshold,lr)
-	if e == 0:
-		count = count + 1
-	if e != 0:
-		flag = e
-print('accuracy ',(count/len(data))*100,'%')		
-if flag == 0:
-	print('Test Successful')
-else:
-	print('Test failed')	
+print('Final accuracy ',total_Accuracy/c,'%')
+
 
 print(w)		
