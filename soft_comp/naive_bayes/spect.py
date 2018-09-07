@@ -84,8 +84,8 @@ def main():
     y = total_records // 10
     x = 0
 
-
-
+    total_accuracy = 0
+    count = 0
     while ( y < total_records ):
 
 
@@ -133,8 +133,9 @@ def main():
             c2 = c2 + 1
 
         print("Accuracy is ",(c1/c2)*100 , "%")
-
+        total_accuracy = total_accuracy + (c1/c2)*100
+        count = count + 1
         x = y
         y = y + total_records // 10
-
+    print("Final accuracy = ",total_accuracy/count,"%")
 main()

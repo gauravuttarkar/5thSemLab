@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import math
 
-pdd=pd.read_csv("IRIS.csv")
+pdd=pd.read_csv("SPECT.csv")
 pdd.sample(frac=1)
 pdd = pdd.sample(frac=1).reset_index(drop=True)
 df=pdd.values
@@ -147,9 +147,11 @@ def kfoldcv(iteration_val,nfolds):
 
 lrate=0.1
 for i in range(n):
-	if df[i][4]=="Iris-setosa":
+	if df[i][0]=="No":
 		y.append(0)
 	else:
 		y.append(1)
+df=np.delete(df, 0, 1)		
 acc=kfoldcv(1000,10)		
 print("average accuracy is =",acc[0],"best accuracy: ",acc[1])				
+print(df)

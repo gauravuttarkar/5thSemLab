@@ -1,5 +1,5 @@
 import csv
-
+import random
 n = 23
 
 def func (w, data, threshold,lr):
@@ -66,6 +66,7 @@ with open('SPECT.csv') as csvfile:
 
 		data.append(list1)	
 
+random.shuffle(data)
 threshold = 5
 lr = 0.4
 init_weight = 1 / n
