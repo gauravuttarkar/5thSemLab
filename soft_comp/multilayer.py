@@ -113,6 +113,9 @@ def kfoldcv(iteration_val,nfolds):
 	k=(n//nfolds)
 	i=1
 	j=k
+	total_recall = 0
+	total_prec = 0
+	count = 0
 	while j<n:
 		pddtrain=np.concatenate((df[:i],df[j:]),axis=0)
 		ytrain=y[:i]+y[j:]
@@ -142,8 +145,14 @@ def kfoldcv(iteration_val,nfolds):
 		print("fpr is :",fpr)
 		print("fnr is :",fnr)
 		print('accuracy is :',acc1,'best accuracy till now: ',acc)
+		print('recall is ',(racc[0]*1.0)/(racc[0] + racc[1]))
+		total_recall = total_recall + (racc[0]*1.0)/(racc[0] + racc[1])
+		print('precision is',(racc[0]*1.0)/(racc[0] + racc[2]))
+		total_prec = total_prec + (racc[0]*1.0)/(racc[0] + racc[2])
 		print("########################################################################")				
-	return [(avgacc*1.0)/l, acc]	
+		count = count + 1
+	
+	return [(avgacc*1.0)/l, acc, total_recall/l,total_prec/l]	
 
 lrate=0.1
 for i in range(n):
@@ -152,4 +161,4 @@ for i in range(n):
 	else:
 		y.append(1)
 acc=kfoldcv(1000,10)		
-print("average accuracy is =",acc[0],"best accuracy: ",acc[1])				
+print("average accuracy is =",acc[0],"best accuracy: ",acc[1],"Average recall ",acc[2],"Average precision ",acc[3])				

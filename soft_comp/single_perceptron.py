@@ -32,7 +32,8 @@ def func (w, data, threshold,lr):
 	for i in range(len(w)):
 		
 		w[i] = w[i] + lr * ( data[-1] - res) * data[i] 
-				
+			
+
 
 	return (w,e)
 
@@ -48,7 +49,11 @@ def test(w, data,threshold,lr):
 		res = 0;
 
 	print("error is ", data[-1] - res )	
-	return data[-1] - res
+
+			
+
+
+	return (data[-1]-res,res)
 
 def iteration():
 	pass
@@ -95,12 +100,19 @@ ten_fold = 0
 flag = 0
 
 x = 0
-y = 10
-
+y = 20
+total_recall = 0
+total_prec = 0
+total_Accuracy = 0
+c = 0
 while(y<100):
 	print('*'*50)
 	train_data = data[:x] + data[y:]
 	test_data = data[x:y]
+	tp = 0
+	fp = 0
+	tn = 0
+	fn = 0
 	for j in range(5000):
 		for i in train_data:
 			w,e = func(w,i,threshold,lr)
@@ -114,25 +126,48 @@ while(y<100):
 				
 
 	print('Testing')
+	# for i in test_data:
+	# 	test(w,i,threshold,lr)
+	count = 0
 	for i in test_data:
-		test(w,i,threshold,lr)
-
+		e,res = test(w, i, threshold, lr)
+		if e == 0:
+			count = count + 1
+		if e != 0:
+			flag = e
+		if i[-1]==1 and res==1:
+			tp+=1
+		elif i[-1]==1:
+			fn+=1
+		elif i[-1]==0 and res==0:
+			tn+=1
+		else:
+			fp+=1				
+	print('recall is ',(tp*1.0)/(tp + fn))
+	total_recall = total_recall + (tp*1.0)/(tp + fn)
+	print('precision is',(tp*1.0)/(tp + fp))
+	total_prec = total_prec + (tp*1.0)/(tp + fp)
+	print('accuracy ', (count / len(test_data)) * 100, '%')
+	total_Accuracy = total_Accuracy + (count / len(test_data)) * 100
 	x = y
-	y = y + 10
+	y = y + len(data) // 10
+	c = c + 1
 
 flag = 0
 count = 0
-for i in data:
-	e = test(w,i,threshold,lr)
-	if e == 0:
-		count = count + 1
-	if e != 0:
-		flag = e
-print('accuracy ',(count/len(data))*100,'%')		
-if flag == 0:
-	print('Test Successful')
-else:
-	print('Test failed')		
-
+# for i in data:
+# 	e = test(w,i,threshold,lr)
+# 	if e == 0:
+# 		count = count + 1
+# 	if e != 0:
+# 		flag = e
+# print('accuracy ',(count/len(data))*100,'%')		
+# if flag == 0:
+# 	print('Test Successful')
+# else:
+# 	print('Test failed')		
+print('Final accuracy ',total_Accuracy/c,'%')
+print('Final Precision',total_prec/c)
+print('Final Recall',total_recall/c)
 print(w)
 
