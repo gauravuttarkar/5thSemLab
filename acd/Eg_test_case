@@ -1,0 +1,6 @@
+a=1;
+print a;
+if a==b then
+print b;
+endif
+#

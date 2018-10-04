@@ -1,0 +1,6 @@
+if x < y then
+print "String";
+else
+print "String";
+endif
+#
