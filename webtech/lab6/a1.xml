@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="products.css"?>
+<!-- <?xml-stylesheet type="text/xsl" href="x.xsl"?> -->
+<document>
+<ad>
+	<band>
+		<name>
+			Band1
+		</name>
+		<genre>Classical</genre>
+		<performers>
+			
+				<f_name>
+					f_name1
+				</f_name>
+				<l_name>
+					l_name1
+				</l_name>
+				<role>
+					Guitarist
+				</role>
+		</performers>
+		<performers>
+				<f_name>
+					f_name2
+				</f_name>
+				<l_name>
+					l_name2
+				</l_name>
+				<role>
+					Keyboard player
+				</role>
+		</performers>
+		<performers>
+				<f_name>
+					f_name3
+				</f_name>
+				<l_name>
+					l_name3
+				</l_name>
+				<role>
+					Singer
+				</role>
+			
+		</performers>	
+
+	</band>
+	<place>
+		<venue>
+			venue1
+		</venue>
+		<address>
+			address1
+		</address>
+		<contact>
+			contact1
+		</contact>			
+	</place>
+	<br></br>
+	<shows minOccurs="1">
+		<date>
+			date1
+		</date>
+		<time>
+			Time1
+		</time>
+		<month>january</month>
+	</shows>
+	<ticket>
+		<price>
+			50
+		</price>
+		<discount minOccurs="0"></discount>
+
+	</ticket>	
+	<seller>
+		<seller_name>
+			Seller1
+		</seller_name>
+		<phone_no>
+			phone_no1
+		</phone_no>
+		<seller_address>
+			seller_Address1
+		</seller_address>	
+	</seller>
+
+
+</ad>
+
+
+<ad>
+	<band>
+		<name>
+			Band2
+		</name>
+		<genre>pop</genre>
+		<performers>
+			
+				<f_name>
+					f_name1
+				</f_name>
+				<l_name>
+					l_name1
+				</l_name>
+				<role>
+					Guitarist
+				</role>
+		</performers>
+		<performers>
+				<f_name>
+					f_name2
+				</f_name>
+				<l_name>
+					l_name2
+				</l_name>
+				<role>
+					Keyboard player
+				</role>
+		</performers>
+		<performers>
+				<f_name>
+					f_name3
+				</f_name>
+				<l_name>
+					l_name3
+				</l_name>
+				<role>
+					Singer
+				</role>
+			
+		</performers>	
+
+	</band>
+	<place>
+		<venue>
+			venue2
+		</venue>
+		<address>address2</address>
+		<contact>
+			contact2
+		</contact>			
+	</place>
+	<br></br>
+	<shows minOccurs="1">
+		<date>
+			date2
+		</date>
+		<time>
+			Time2
+		</time>
+		<month>july</month>
+	</shows>
+	<ticket>
+		<price>150</price>
+		<discount minOccurs="0"></discount>
+	
+
+	</ticket>	
+	<seller>
+		<seller_name>
+			Seller2
+		</seller_name>
+		<phone_no>
+			phone_no2
+		</phone_no>
+		<seller_address>
+			seller_Address2
+		</seller_address>	
+	</seller>
+
+
+</ad>
+
+<ad>
+	<band>
+		<name>
+			Band3
+		</name>
+		<genre>Instrumental</genre>
+				<performers>
+			
+				<f_name>
+					f_name1
+				</f_name>
+				<l_name>
+					l_name1
+				</l_name>
+				<role>
+					Guitarist
+				</role>
+		</performers>
+		<performers>
+				<f_name>
+					f_name2
+				</f_name>
+				<l_name>
+					l_name2
+				</l_name>
+				<role>
+					Keyboard player
+				</role>
+		</performers>
+		<performers>
+				<f_name>
+					f_name3
+				</f_name>
+				<l_name>
+					l_name3
+				</l_name>
+				<role>
+					Singer
+				</role>
+			
+		</performers>	
+
+	</band>
+	<place>
+		<venue>
+			venue3
+		</venue>
+		<address>mangalore</address>
+		<contact>
+			contact3
+		</contact>			
+	</place>
+	<br></br>
+	<shows minOccurs="1">
+		<date>
+			date3
+		</date>
+		<time>
+			Time3
+		</time>
+		<month>april</month>	
+	</shows>
+	<ticket>
+		<price>50</price>
+		<discount minOccurs="0">10</discount>
+
+	</ticket>	
+	<seller>
+		<seller_name>
+			Seller3
+		</seller_name>
+		<phone_no>
+			phone_no3
+		</phone_no>
+		<seller_address>
+			seller_Address3
+		</seller_address>	
+	</seller>
+
+
+</ad>
+
+</document>

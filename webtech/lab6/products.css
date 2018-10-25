@@ -1,0 +1,30 @@
+name,place,shows{
+	color:blue;
+	font-weight: bold;
+	display: block;
+}
+
+genre{
+	color:maroon;
+	font-style: italic;
+}
+performers {
+	display: inline;
+	color:orange;
+	margin-right: 5em;
+}
+
+performers > l_name{
+	display: none;
+	margin-right: 5em;
+}
+
+ticket{
+	color:orange;
+	display: block;
+	margin-right: 5em;
+}
+seller{
+	color:black;
+	font-weight: bold;
+}

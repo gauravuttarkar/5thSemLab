@@ -3,10 +3,11 @@ import random
 
 def cross_over(chrome1, chrome2):
     x = []
-    for i in chrome1[:len(chrome1)//2]:
+    rand_len = random.randint(1,len(chrome1) - 1)
+    for i in chrome1[:rand_len]:
         x.append(i)
 
-    for i in chrome2[len(chrome2)//2:]:
+    for i in chrome2[rand_len:]:
         x.append(i)
 
     return x        
@@ -51,9 +52,9 @@ def genetic_algorithm():
 
     list_of_accuracy = []
 
-    iterations = 50
+    iterations = 100
     t = 0
-    while ( t < 50 ):
+    while ( t < iterations ):
         list_of_accuracy = []
 
         for i in chromosomes:
@@ -97,28 +98,6 @@ def genetic_algorithm():
         #copy_for_crossover = chromosomes
 
         after_crossover = []
-
-        for i in range(number_of_chromosome//4):
-            r = random.randint(0,len(chromosomes)-1)
-            chromosomes[r] = cross_over(chromosomes[r],chromosomes[random.randint(0,len(chromosomes)-1)])
-
-
-        for i in range((number_of_chromosome*size_of_chromosome)//10):
-            ind1 = random.randint(0,number_of_chromosome - 1)
-            ind2 = random.randint(0,size_of_chromosome - 1)
-
-            if chromosomes[ind1][ind2] == 0:
-                chromosomes[ind1][ind2] = 1
-            else:
-                chromosomes[ind1][ind2] = 0    
-        # for i in range(number_of_chromosome//4):
-        #     r = random.randint(0,len(chromosomes)-1)
-        #     after_crossover.append(cross_over(chromosomes[r],chromosomes[random.randint(0,len(chromosomes)-1)]))
-        #     chromosomes.pop(r)
-        # print(after_crossover)
-        # for j in after_crossover:
-        #     chromosomes.append(i)    
-
         t = t + 1
 
 
@@ -143,33 +122,6 @@ def read_input(string):
             data.append(list1)
 
     return data
-
-# def test1(p_yes, p_no, prob_yes, test_data):
-#     ans_yes = 0
-#     ans_no = 0
-
-#     prod_yes = 1
-#     prod_no = 1
-#     for i in range(len(test_data)):
-        
-#             if test_data[i] == 1:
-#                 prod_yes = prod_yes * p_yes[i]
-#                 prod_no = prod_no * p_no[i]
-#             else:
-#                 prod_yes = prod_yes * (1 - p_yes[i])
-#                 prod_no = prod_no * (1 - p_no[i])
-                    
-#     prod_yes = prod_yes * prob_yes
-#     prod_no = prod_no * ( 1 - prob_yes)
-
-#     ans_yes = prod_yes / ( prod_yes + prod_no )
-
-#     ans_no = 1 - ans_yes
-
-#     if ans_yes > ans_no :
-#         return 1
-#     else:
-#         return 0
 
 def test(p_yes, p_no, prob_yes, test_data, feature):
     ans_yes = 0
@@ -201,28 +153,17 @@ def test(p_yes, p_no, prob_yes, test_data, feature):
 def nb(feature):
     data = read_input('SPECT.csv')
     random.shuffle(data)
-
     p_yes = []
     p_no = []
-
-
     total_records = len(data)
     #print(total_records)
-
     tenfold = 0
     y = total_records // 10
     x = 0
-
     data_after_selection = []
-
-
-
     total_accuracy = 0
     count = 0
     while ( y < total_records ):
-
-
-
         p_yes = []
         p_no = []
         prob_yes = 0
@@ -267,15 +208,6 @@ def nb(feature):
                 
                 #print("Fail")
             c2 = c2 + 1
-        # for i in test_data:
-        #     if ( test1(p_yes,p_no,prob_yes,i[:-1]) == i[-1] ):
-        #         print("success")
-        #         c3 = c3 + 1
-        #     else:
-        #         print("Fail")
-        #     c4 = c4 + 1
-        #print("Accuracy is ",(c1/c2)*100 , "%")
-        # print("Accuracy is ",(c3/c4)*100 , "%")
         total_accuracy = total_accuracy + (c1/c2)*100
         count = count + 1
         x = y
